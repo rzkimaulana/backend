@@ -6,6 +6,7 @@ const userRoutes = require("../api/routes/userroutes");
 const siswaRoutes = require("../api/routes/siswaroutes");
 
 const app = express();
+const port = process.env.PORT || 3002
 
 // Middleware
 app.use(cors());
@@ -23,6 +24,9 @@ app.get('/', (req, res) => {
     status: 'Server ready 🚀',
   });
 });
+app.listen(port, () => {
+  console.log(`Server ready listening on http://localhost:${port}`)
+})
 
 // Export aplikasi Express sebagai modul
 module.exports = app;
