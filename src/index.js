@@ -2,8 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser')
 // Import routes
-const userRoutes = require("../api/routes/userroutes");
-const siswaRoutes = require("../api/routes/siswaroutes");
+const {userRoutes,siswaRoutes} = require("../api/routes")
 
 const app = express();
 const port = process.env.PORT || 3002
@@ -26,6 +25,7 @@ app.get('/', (req, res) => {
 });
 app.listen(port, () => {
   console.log(`Server ready listening on http://localhost:${port}`)
+  console.log(userRoutes)
 })
 
 // Export aplikasi Express sebagai modul
