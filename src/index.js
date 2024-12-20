@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 // Import routes
-const userRoutes = require("./api/routes/userroutes");
-const siswaRoutes = require("./api/routes/siswaroutes");
+const userRoutes = require("../api/routes/userroutes");
+const siswaRoutes = require("../api/routes/siswaroutes");
 
 const app = express();
 
