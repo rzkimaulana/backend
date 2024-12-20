@@ -4,7 +4,7 @@ const cors = require("cors");
 const router = require("./routes");
 
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
@@ -21,6 +21,8 @@ app.get('/', (req, res) => {
     status: 'Server ready 🚀',
   });
 });
-
+ app.listen(port,() => {
+  console.log(`server is running ob http://localhost:${port}`)
+ })
 
 module.exports = app;
