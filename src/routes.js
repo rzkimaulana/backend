@@ -1,5 +1,5 @@
-const router = require("express").Router()
 const express = require("express")
+const router = express.Router()
 
 const{
     userRoutes,
@@ -8,3 +8,5 @@ const{
 
 router.use('/api/user', userRoutes);
 router.use('/api/siswa', siswaRoutes);
+
+module.exports= router
