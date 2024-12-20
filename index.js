@@ -16,6 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/user', userRoutes);
 app.use('/api/siswa', siswaRoutes);
 
+app.get('/', (req, res) => {
+  res.send({
+    message: 'Hello 👋',
+    status: 'Server ready 🚀',
+  })
+})
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
