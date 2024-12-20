@@ -1,18 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 
-//
-const userRoutes = require("./api/routes/userroutes")
-const siswaRoutes = require("./api/routes/siswaroutes")
+// Import routes
+const userRoutes = require("./api/routes/userroutes");
+const siswaRoutes = require("./api/routes/siswaroutes");
 
 const app = express();
-const PORT = 3001;
 
-
+// Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 
+// Routes
 app.use('/api/user', userRoutes);
 app.use('/api/siswa', siswaRoutes);
 
@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   res.send({
     message: 'Hello 👋',
     status: 'Server ready 🚀',
-  })
-})
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  });
 });
+
+// Export aplikasi Express sebagai modul
+module.exports = app;
