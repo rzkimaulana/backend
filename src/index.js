@@ -1,28 +1,34 @@
 const express = require("express");
 const cors = require("cors");
-
-const router = require("./routes");
+const routers = require("./routes");
+const morgan = require("morgan");
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001; // Menggunakan PORT dari environment atau 3005 jika lokal
 
 // Middleware
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev")); // Menggunakan morgan untuk logging request
 
 // Routes
-app.use(router);
+app.use(routers);
 
-// Rute untuk testing
+// Rute utama
 app.get('/', (req, res) => {
   res.send({
     message: 'Hello 👋',
     status: 'Server ready 🚀',
   });
 });
- app.listen(port,() => {
-  console.log(`server is running ob http://localhost:${port}`)
- })
 
+// Menangani server untuk lokal development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running locally on http://localhost:${PORT}`);
+  });
+}
+
+// Export app untuk Vercel (akan dijalankan oleh Vercel)
 module.exports = app;
